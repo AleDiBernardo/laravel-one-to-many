@@ -13,6 +13,6 @@ class Type extends Model
 
     public function projects()
     {
-        return $this->hasMany(Project::class); // Un Brand ha molte Car
+        return $this->hasMany(Project::class); // Un Type ha molti Progetti
     }
 }
