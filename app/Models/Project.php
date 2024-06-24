@@ -10,4 +10,9 @@ class Project extends Model
     use HasFactory;
 
     protected $fillable=['title','owner','description'];
+
+    public function type()
+    {
+        return $this->belongsTo(Type::class); // Una Car appartiene a un Brand
+    }
 }
