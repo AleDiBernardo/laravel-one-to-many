@@ -40,6 +40,15 @@
             <textarea class="form-control" id="description" name="description"></textarea>
         </div>
 
+        <label for="type_id" class="form-label">Typology:</label>
+
+        <select class="form-select" name="type_id" id="type_id">
+            <option value=""></option>
+            @foreach($types as $type)
+                <option value="{{ $type->id }}">{{ $type->name }}</option>
+            @endforeach
+        </select>
+
         <div>
             <span>Slug:</span>
             <p class="fw-bold" id="slug"></p>

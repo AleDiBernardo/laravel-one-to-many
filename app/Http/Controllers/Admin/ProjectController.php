@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Project;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Models\Type;
 use Illuminate\Support\Str;
 class ProjectController extends Controller
 {
@@ -23,7 +23,8 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('admin.projects.create');
+        $types = Type::all();
+        return view('admin.projects.create',compact('types'));
     }
 
     /**
@@ -60,7 +61,9 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view('admin.projects.edit', compact('project'));
+
+        $types = Type::all();
+        return view('admin.projects.edit', compact('project', 'types'));
         
     }
 
@@ -73,6 +76,7 @@ class ProjectController extends Controller
             'title' => 'required|max:255|unique:projects,title,' . $project->id,
             'owner' => 'required|max:255',
             'description' => 'nullable|max:255',
+            'type_id' => 'nullable'
         ]);
 
         $slug = Str::slug($request->title, '-');
@@ -80,6 +84,7 @@ class ProjectController extends Controller
         $project->title = $request->title;
         $project->owner = $request->owner;
         $project->description = $request->description;
+        $project->type_id = $request->type_id;
         $project->slug = $slug;
         $project->save();
 

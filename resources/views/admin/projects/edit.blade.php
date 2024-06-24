@@ -40,6 +40,15 @@
             <textarea class="form-control" id="description" name="description">{{ old('description', $project->description) }}</textarea>
         </div>
 
+        <label for="type_id" class="form-label">Typology:</label>
+
+        <select class="form-select" name="type_id" id="type_id">
+            <option value=""></option>
+            @foreach($types as $type)
+                <option @selected($project->type_id == $type->id) value="{{ $type->id }}">{{ $type->name }}</option>
+            @endforeach
+        </select>
+
         <button type="submit" class="btn btn-primary mt-2">Update</button>
         <a href="{{ route('admin.projects.index') }}" class="btn btn-secondary mt-2">Cancel</a>
     </form>
