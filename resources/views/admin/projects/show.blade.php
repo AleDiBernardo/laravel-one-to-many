@@ -12,6 +12,7 @@
                 <div class="card-body">
                     <p><strong>Owner:</strong> {{ $project->owner }}</p>
                     <p><strong>Description:</strong> {{ $project->description }}</p>
+                    <p><strong>Type:</strong> {{ $project->type->name }}</p>
                 </div>
             </div>
             <a href="{{ route('admin.projects.edit',['project'=>$project->slug])  }}" class="btn btn-warning fw-bold text-light mt-2">Edit</a>
