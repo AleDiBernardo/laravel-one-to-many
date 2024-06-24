@@ -44,8 +44,8 @@
 
         <select class="form-select" name="type_id" id="type_id">
             <option value=""></option>
-            @foreach($types as $type)
-                <option @selected($project->type_id == $type->id) value="{{ $type->id }}">{{ $type->name }}</option>
+            @foreach($types as $index => $type)
+                <option @selected($project->type_id === $index+1) value="{{ $type->id }}">{{ $type->name }}</option>
             @endforeach
         </select>
 

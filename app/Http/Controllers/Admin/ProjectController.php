@@ -42,6 +42,7 @@ class ProjectController extends Controller
         $project->title = $request->title;
         $project->owner = $request->owner;
         $project->description = $request->description;
+        $project->type_id = $request->type_id;
         $project->slug = Str::slug($request->title);
         $project->save();
 
